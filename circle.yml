@@ -3,8 +3,6 @@ machine:
     - docker
 
 dependencies:
-  cache_directories:
-    - "~/docker"
   override:
     - "ls -alh ~/docker || :"
     - "rm -rf ~/docker/* || :"
