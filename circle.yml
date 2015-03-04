@@ -2,7 +2,7 @@ machine:
   services:
     - docker
 
-depedencies:
+dependencies:
   cache_directories:
     - "~/docker"
   override:
