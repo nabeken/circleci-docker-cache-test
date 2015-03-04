@@ -4,17 +4,10 @@ machine:
 
 dependencies:
   cache_directories:
-    - "~/docker2"
+    - "~/docker"
   override:
-    - "mkdir -p ~/docker2"
-    - "ls -alh ~/docker2"
-    - if [[ -e ~/docker2/ubuntu.tar ]]; then docker load -i ~/docker2/ubuntu.tar; else docker pull ubuntu:14.10 && docker save -o ~/docker2/ubuntu.tar ubuntu:14.10; fi
-    - if [[ -e ~/docker2/golang.tar ]]; then docker load -i ~/docker2/golang.tar; else docker pull golang:1.4 && docker save -o ~/docker2/golang.tar golang:1.4; fi
-    - if [[ -e ~/docker2/postgres.tar ]]; then docker load -i ~/docker2/postgres.tar; else docker pull postgres:9.4 && docker save -o ~/docker2/postgres.tar postgres:9.4; fi
-    - if [[ -e ~/docker2/redis.tar ]]; then docker load -i ~/docker2/redis.tar; else docker pull redis:2.8 && docker save -o ~/docker2/redis.tar redis:2.8; fi
-    - if [[ -e ~/docker2/consul.tar ]]; then docker load -i ~/docker2/consul.tar; else docker pull progrium/consul:consul-0.4 && docker save -o ~/docker2/consul.tar progrium/consul:consul-0.4; fi
-    - if [[ -e ~/docker2/volume-container.tar ]]; then docker load -i ~/docker2/volume-container.tar; else docker pull nabeken/docker-volume-container-rsync:latest && docker save -o ~/docker2/volume-container.tar nabeken/docker-volume-container-rsync:latest; fi
-    - "ls -alh ~/docker2"
+    - "ls -alh ~/docker"
+    - "rm -rf ~/docker/*"
 
 test:
   override:
