@@ -7,9 +7,6 @@ dependencies:
     - "~/docker"
   override:
     - "mkdir -p ~/docker"
-
-test:
-  override:
     - if [[ -e ~/docker/ubuntu.tar.gz ]]; then docker load -i ~/docker/ubuntu.tar.gz; else docker pull ubuntu:14.10 && docker save -o ~/docker/ubuntu.tar ubuntu:14.10; gzip ~/docker/ubuntu.tar; fi
     - if [[ -e ~/docker/golang.tar.gz ]]; then docker load -i ~/docker/golang.tar.gz; else docker pull golang:1.4 && docker save -o ~/docker/golang.tar golang:1.4; gzip ~/docker/golang.tar; fi
     - if [[ -e ~/docker/postgres.tar.gz ]]; then docker load -i ~/docker/postgres.tar.gz; else docker pull postgres:9.4 && docker save -o ~/docker/postgres.tar postgres:9.4; gzip ~/docker/postgres.tar; fi
