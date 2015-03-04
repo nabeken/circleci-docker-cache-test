@@ -19,4 +19,5 @@ dependencies:
 test:
   override:
     - /bin/true
+    - docker version
     - docker info
