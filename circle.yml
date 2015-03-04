@@ -2,11 +2,23 @@ machine:
   services:
     - docker
 
+depedencies:
+  cache_directories:
+    - "~/docker"
+  override:
+    - "mkdir -p ~/docker"
+
 test:
   override:
     - docker pull ubuntu:14.10
+    - docker save -o ~/docker/ubuntu.tar ubuntu:14.10; gzip ~/docker/ubuntu.tar
     - docker pull golang:1.4
+    - docker save -o ~/docker/golang.tar golang:1.4; gzip ~/docker/golang.tar
     - docker pull postgres:9.4
+    - docker save -o ~/docker/postgres.tar postgres:9.4; gzip ~/docker/postgres.tar
     - docker pull redis:2.8
+    - docker save -o ~/docker/redis.tar redis:2.8; gzip ~/docker/redis.tar
     - docker pull progrium/consul:consul-0.4
+    - docker save -o ~/docker/consul.tar consul:consul-0.4; gzip ~/docker/consul.tar
     - docker pull nabeken/docker-volume-container-rsync:latest
+    - docker save -o ~/docker/volume-container.tar nabeken/docker-volume-container-rsync:latest; gzip ~/docker/volume-container.tar
