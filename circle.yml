@@ -6,3 +6,7 @@ test:
   override:
     - docker pull ubuntu:14.10
     - docker pull golang:1.4
+    - docker pull postgres:9.4
+    - docker pull redis:2.8
+    - docker pull progrium/consul:consul-0.4
+    - docker pull nabeken/docker-volume-container-rsync:latest
