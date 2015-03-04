@@ -15,3 +15,7 @@ dependencies:
     - if [[ -e ~/docker/consul.tar ]]; then docker load -i ~/docker/consul.tar; else docker pull progrium/consul:consul-0.4 && docker save -o ~/docker/consul.tar progrium/consul:consul-0.4; fi
     - if [[ -e ~/docker/volume-container.tar ]]; then docker load -i ~/docker/volume-container.tar; else docker pull nabeken/docker-volume-container-rsync:latest && docker save -o ~/docker/volume-container.tar nabeken/docker-volume-container-rsync:latest; fi
     - "ls -alh ~/docker"
+
+test:
+  override:
+    - /bin/true
