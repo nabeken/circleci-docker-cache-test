@@ -22,8 +22,7 @@ docker_load_or_pull() {
   local fn="${DOCKER_CACHE}/$(docker_name_to_basename "${name}")"
   if [[ -e "${fn}" ]]; then
     echo "loading from ${fn}"
-    docker load -i "${fn}"
-    echo $?
+    docker load -i "${fn}"; echo $?
   else
     docker pull "${name}"
   fi
