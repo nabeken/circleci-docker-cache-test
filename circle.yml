@@ -16,3 +16,4 @@ test:
     - /bin/true
     - docker version
     - docker info
+    - docker images
