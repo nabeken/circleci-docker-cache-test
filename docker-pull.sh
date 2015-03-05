@@ -29,8 +29,12 @@ docker_load_or_pull() {
 }
 
 for i in ubuntu:14.10 golang:1.4 postgres:9.4 redis:2.8 progrium/consul:consul-0.4 nabeken/docker-volume-container-rsync:latest; do
-  echo "$(LANG=C date): begin for ${i}"
-  docker_load_or_pull "${i}"
-  docker_save_if_necessary "${i}"
-  echo "$(LANG=C date): done for ${i}"
+  {
+    echo "$(LANG=C date): begin for ${i}"
+    docker_load_or_pull "${i}"
+    docker_save_if_necessary "${i}"
+    echo "$(LANG=C date): done for ${i}"
+  } &
 done
+
+wait
