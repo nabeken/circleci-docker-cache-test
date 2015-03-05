@@ -5,7 +5,7 @@ set -o pipefail
 DOCKER_CACHE="${HOME}/docker2"
 
 docker_name_to_basename() {
-  echo $(echo "${1}" | tr ':' '-').tar
+  echo $(echo "${1}" | tr ':/' '-').tar
 }
 
 docker_save_if_necessary() {
