@@ -28,7 +28,7 @@ docker_load_or_pull() {
 for i in ubuntu:14.10 golang:1.4 postgres:9.4 redis:2.8 progrium/consul:consul-0.4 nabeken/docker-volume-container-rsync:latest; do
   {
     echo "$(LANG=C date): begin for ${i}"
-    for i in 1 2 3; do
+    for n in 1 2 3; do
       docker_load_or_pull "${i}"
       if [[ $? -eq 0 ]]; then
         break
