@@ -23,6 +23,7 @@ docker_load_or_pull() {
   if [[ -e "${fn}" ]]; then
     echo "loading from ${fn}"
     docker load -i "${fn}"
+    echo $?
   else
     docker pull "${name}"
   fi
