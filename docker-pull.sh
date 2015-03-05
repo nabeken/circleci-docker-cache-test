@@ -33,6 +33,7 @@ for i in ubuntu:14.10 golang:1.4 postgres:9.4 redis:2.8 progrium/consul:consul-0
       if [[ $? -eq 0 ]]; then
         break
       fi
+      sleep 1
     done
     docker_save_if_necessary "${i}"
     echo "$(LANG=C date): done for ${i}"
