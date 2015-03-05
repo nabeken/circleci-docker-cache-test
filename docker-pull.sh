@@ -1,7 +1,4 @@
 #!/bin/bash
-set -e
-set -o pipefail
-
 DOCKER_CACHE="${HOME}/docker2"
 
 docker_name_to_basename() {
@@ -22,7 +19,7 @@ docker_load_or_pull() {
   local fn="${DOCKER_CACHE}/$(docker_name_to_basename "${name}")"
   if [[ -e "${fn}" ]]; then
     echo "loading from ${fn}"
-    docker load -i "${fn}"; echo $?
+    docker load -i "${fn}"
   else
     docker pull "${name}"
   fi
@@ -31,7 +28,12 @@ docker_load_or_pull() {
 for i in ubuntu:14.10 golang:1.4 postgres:9.4 redis:2.8 progrium/consul:consul-0.4 nabeken/docker-volume-container-rsync:latest; do
   {
     echo "$(LANG=C date): begin for ${i}"
-    docker_load_or_pull "${i}"
+    for i in 1 2 3; do
+      docker_load_or_pull "${i}"
+      if [[ $? -eq 0 ]]; then
+        break
+      fi
+    done
     docker_save_if_necessary "${i}"
     echo "$(LANG=C date): done for ${i}"
   } &
