@@ -2,7 +2,7 @@
 DOCKER_CACHE="${HOME}/docker2"
 
 docker_name_to_basename() {
-  echo $(echo "${1}" | tr ':/' '-').tar
+  echo $(echo "${1}" | tr ':/' '-').tar.gz
 }
 
 docker_save_if_necessary() {
@@ -10,7 +10,7 @@ docker_save_if_necessary() {
   local fn="${DOCKER_CACHE}/$(docker_name_to_basename "${name}")"
   if [[ ! -e "${fn}" ]]; then
     echo "saving to ${fn}"
-    docker save "${name}" > "${fn}"
+    docker save "${name}" | gzip > "${fn}"
   fi
 }
 
