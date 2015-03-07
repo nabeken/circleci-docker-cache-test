@@ -6,9 +6,9 @@ dependencies:
   override:
     - "./docker-pull.sh pull"
     - "./docker-pull.sh serial"
-    - "./docker-pull.sh clear"
+    - "./docker-pull.sh clear || :"
     - "./docker-pull.sh parallel"
-    - "./docker-pull.sh clear"
+    - "./docker-pull.sh clear || :"
     - "./docker-pull.sh serial"
 
 test:
