@@ -9,7 +9,7 @@ case $1 in
     for i in ruby node golang; do
       docker rmi nabeken/ubuntu-14-10-"${i}"
     done
-    sudo ./nuke-graph-directory.sh
+    sudo ./nuke-graph-directory.sh /var/lib/docker
     ;;
   serial)
     for i in ruby node golang; do
