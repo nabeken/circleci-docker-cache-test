@@ -3,7 +3,8 @@
 
 case $1 in
   pull)
-    docker pull ubuntu:14.10
+    docker_load_or_pull ubuntu:14.10
+    docker_save_if_necessary ubuntu:14.10
     ;;
   clear)
     for i in ruby node golang; do

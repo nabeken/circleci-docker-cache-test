@@ -3,7 +3,10 @@ machine:
     - docker
 
 dependencies:
+  cache_directories:
+    - "~/docker2"
   override:
+    - "mkdir -p ~/docker2"
     - "./docker-pull.sh pull"
     - "./docker-pull.sh parallel"
 
