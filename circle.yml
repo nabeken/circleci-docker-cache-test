@@ -3,13 +3,11 @@ machine:
     - docker
 
 dependencies:
-  cache_directories:
-    - "~/docker2"
   override:
-    - "mkdir -p ~/docker2"
-    - "ls -alh ~/docker2"
-    - "./docker-pull.sh"
-    - "ls -alh ~/docker2"
+    - "./docker-pull.sh pull"
+    - "./docker-pull.sh serial"
+    - "./docker-pull.sh clear"
+    - "./docker-pull.sh parallel"
 
 test:
   override:
