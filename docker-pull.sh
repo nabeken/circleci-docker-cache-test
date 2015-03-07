@@ -1,7 +1,7 @@
 #!/bin/bash
 . ./functions.sh
 
-case m in
+case $1 in
   pull)
     docker pull ubuntu:14.10
     ;;
